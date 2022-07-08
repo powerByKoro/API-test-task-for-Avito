@@ -16,7 +16,7 @@ $requestParams = $_REQUEST;
 if($requestMethod === 'GET') {
 
     //Конвертация в выбранную валюту USD , EUR, GBP при наличии параметра ?currency
-    if($requestUri[0] === 'users' && isset($requestUri[1]) && isset($requestParams['currency']) && is_numeric(strtok($requestUri[1],'?'))){
+    if($requestUri[0] === 'users' && isset($requestUri[1]) && isset($requestParams['currency']) && $requestParams['currency']!== '' && is_numeric(strtok($requestUri[1],'?'))){
 
         $currency = new CurrencyConvertion($requestParams['currency'], $requestUri[1]);
         $currency = $currency->convert();

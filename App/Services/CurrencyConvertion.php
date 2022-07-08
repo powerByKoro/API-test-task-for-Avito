@@ -49,28 +49,41 @@ class CurrencyConvertion
 
         curl_close($curl);
 
-        if($this->rubles === false){
+        if(array_key_exists('error',$response)){
 
             $request = [
                 'status' => false,
                 'code' => 404,
-                'msg' => 'Пользовтель не найден.'
+                'msg' => 'Неверно указан код валюты.'
             ];
 
             return json_encode($request,JSON_UNESCAPED_UNICODE|JSON_UNESCAPED_SLASHES);
-
         }else{
 
-            $this->currency = $this->rubles * (double)$response['result'];
+            if($this->rubles === false){
 
-            $request = [
-                'status' => true,
-                'code' => 200,
-                'msg' => 'Баланс пользователя: с id =('. $this->id.') ' . $this->currency . ' '. $this->currencyStr,
-                'data' => $this->currency
-            ];
+                $request = [
+                    'status' => false,
+                    'code' => 404,
+                    'msg' => 'Пользовтель не найден.'
+                ];
 
-            return json_encode($request,JSON_UNESCAPED_UNICODE|JSON_UNESCAPED_SLASHES);
+                return json_encode($request,JSON_UNESCAPED_UNICODE|JSON_UNESCAPED_SLASHES);
+
+            }
+            else{
+
+                $this->currency = $this->rubles * (double)$response['result'];
+
+                $request = [
+                    'status' => true,
+                    'code' => 200,
+                    'msg' => 'Баланс пользователя: с id =('. $this->id.') ' . $this->currency . ' '. $this->currencyStr,
+                    'data' => $this->currency
+                ];
+
+                return json_encode($request,JSON_UNESCAPED_UNICODE|JSON_UNESCAPED_SLASHES);
+            }
         }
     }
 }
