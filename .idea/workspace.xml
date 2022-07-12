@@ -4,19 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f6f81c58-1c5f-498c-b5c7-9c6f9af0700f" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.name" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/test.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/App/Services/OperationDescription.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/Services/PostAccount.php" beforeDir="false" afterPath="$PROJECT_DIR$/App/Services/PostAccount.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
-    </list>
+    <list default="true" id="f6f81c58-1c5f-498c-b5c7-9c6f9af0700f" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -75,7 +63,7 @@
       <workItem from="1657180760390" duration="3010000" />
       <workItem from="1657202682130" duration="12737000" />
       <workItem from="1657271601937" duration="18585000" />
-      <workItem from="1657627130456" duration="7096000" />
+      <workItem from="1657627130456" duration="7711000" />
     </task>
     <servers />
   </component>

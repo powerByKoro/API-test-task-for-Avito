@@ -2,6 +2,7 @@
 
 use App\Services\CurrencyConvertion;
 use App\Services\GetAccount;
+use App\Services\OperationDescription;
 use App\Services\PostAccount;
 use App\Services\Trade;
 
@@ -22,6 +23,14 @@ if($requestMethod === 'GET') {
         $currency = $currency->convert();
 
         echo $currency;
+    }
+    //Информация об операциях пользователя
+    elseif ($requestUri[0] === 'users' && isset($requestUri[1]) && isset($requestUri[2]) && $requestUri[2] === 'description' && !isset($requestUri[3]) && is_numeric($requestUri[1])) {
+
+        $description = new OperationDescription($requestUri[1]);
+        $description = $description->getOperations();
+
+        echo $description;
     }
 
     //GET получение баланса пользователя
@@ -52,9 +61,9 @@ elseif ($requestMethod === 'POST'){
     }
 
     //POST уменьшение баланса
-    elseif($requestUri[0] === 'users' && isset($requestUri[1]) && $requestUri[1]==='decrease' && !isset($requestUri[2])  && isset($requestParams['id'], $requestParams['balance']) && is_numeric($requestParams['id']) && is_numeric($requestParams['balance'])){
+    elseif($requestUri[0] === 'users' && isset($requestUri[1]) && $requestUri[1]==='decrease' && !isset($requestUri[2])  && isset($requestParams['id'], $requestParams['balance'], $requestParams['description']) && is_numeric($requestParams['id']) && is_numeric($requestParams['balance'])){
 
-        $balance = new PostAccount($requestParams['id'], $requestParams['balance']);
+        $balance = new PostAccount($requestParams['id'], $requestParams['balance'], $requestParams['description']);
         $balance = $balance->decreaseBalance();
 
         echo $balance;
