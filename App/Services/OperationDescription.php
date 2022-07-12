@@ -48,7 +48,7 @@ class OperationDescription
             $request = [
                 'status' => false,
                 'code' => 404,
-                'msg' => 'Пользователь не найден '
+                'msg' => 'Пользователь не совершал покупок '
             ];
 
             return json_encode($request, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
