@@ -10,12 +10,15 @@ class PostAccount
     private $pdo;
     private $addBalance;
     private $id;
+    private $description;
 
-    public function __construct(int $id, float $addBalance)
+    public function __construct(int $id, float $addBalance, string $description = null)
     {
         $this->pdo = (new DBConnection())->getPDO();
         $this->addBalance = $addBalance;
         $this->id = $id;
+        $this->description = $description;
+
     }
 
     public function increaseBalance()
@@ -78,10 +81,17 @@ class PostAccount
                     'newBalance' => $newBalance,
                 ]);
 
+                $query = $this->pdo->prepare("INSERT INTO operation_description (user_id, price, description) VALUES (:id ,:price, :description)");
+                $query->execute([
+                    'id' => $this->id,
+                    'price' => $this->addBalance,
+                    'description' => $this->description,
+                ]);
+
                 $request = [
                     'status' => true,
                     'code' => 200,
-                    'msg' => "У пользователя с id = ($this->id) списано $this->addBalance RUB"
+                    'msg' => "У пользователя с id = ($this->id) списано $this->addBalance RUB за операцию $this->description"
                 ];
 
                 return json_encode($request,JSON_UNESCAPED_UNICODE|JSON_UNESCAPED_SLASHES);
